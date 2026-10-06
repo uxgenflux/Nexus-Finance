@@ -94,6 +94,15 @@ body.selm .r[data-k]::before{animation:pop .22s ease both}body.selm .r[data-k].s
 body.selm .c[data-k]::after{animation:pc .22s ease both}body.selm .c[data-k].sl::after{animation:pop2 .26s ease both}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:.45s;animation-timing-function:ease-in-out}html.na *,html.na ::before,html.na ::after{transition:none!important;animation:none!important}html.tt,html.tt *{transition:background-color .35s,color .35s,border-color .35s,fill .35s!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-delay:0ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;transition-delay:0ms!important}}
+#wll,#wll *,#p_goal .g2,#p_goal .g2 *,#p_tx [data-k],#p_tx [data-k] *{-webkit-user-select:none!important;user-select:none!important;-webkit-touch-callout:none!important;-webkit-tap-highlight-color:transparent}
+#wll ::selection,#p_goal .g2 ::selection,#p_tx [data-k] ::selection{background:transparent}
+.dgi{transition:transform .2s cubic-bezier(.2,.8,.2,1)!important;will-change:transform}
+.dgl{z-index:5;transition:none!important;will-change:transform;touch-action:none;cursor:grabbing;box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.r.dgl{background:var(--cd);border-radius:12px;border-color:transparent;margin:0 -10px;padding-left:10px!important;padding-right:10px!important}
+.dgl.dgs{transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s!important;box-shadow:none}
+@media(max-width:599px){#mo{padding:0 12px calc(max(5vh,20px) + env(safe-area-inset-bottom,0px));box-sizing:border-box}.sh{border-radius:20px;max-height:calc(100% - 12px - var(--kbh,0px))}}
+#mo.show .sh{transform:translate3d(0,calc(var(--kbh,0px)*-1),0);will-change:transform}
+.b,button,.r,label,select,input,a{touch-action:manipulation}
 </style><style>.bal{cursor:pointer;display:block;margin-bottom:10px;width:fit-content;max-width:100%;border-radius:10px;-webkit-tap-highlight-color:transparent}.bal:active{opacity:.7}.hq details{padding:10px 0;border-top:1px solid var(--bd)}.hq h3+details{border-top:0}.hq summary{cursor:pointer;font-weight:400;font-size:15px;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px}.hq summary::-webkit-details-marker{display:none}.hq summary::after{content:"";flex:none;width:8px;height:8px;border-right:2px solid var(--mu);border-bottom:2px solid var(--mu);transform:rotate(45deg);margin:-4px 4px 0 0;transition:transform .2s}.hq details[open] summary::after{transform:rotate(-135deg);margin-top:4px}.hq details p{margin:8px 0 0;font-weight:400;font-size:14px;line-height:1.55}.bal:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
 </style>
 </head><body>
@@ -250,10 +259,10 @@ let F=null;
 function form(title,fields,v,ok,del,kd){F={title,fields,v,ok,del,kd};drawF(1)}
 function collect(){const f=$('#fm');if(!f||!F)return;F.fields.forEach(x=>{const e=f.elements[x.k];if(e&&x.type!='file')F.v[x.k]=x.type=='number'?pn(e.value):e.value})}
 function drawF(sk){if(!F)return;if(!sk)collect();const{title,fields,v,del}=F;
- $('#mo').innerHTML=`<div class="sh" role="dialog" aria-modal="true" aria-labelledby="fh" tabindex="-1"><form id="fm" onsubmit="return sub(event)"><h3 id="fh">${title}</h3>${fields.filter(x=>!x.show||x.show(v)).map(x=>{const l=typeof x.l=='function'?x.l(v):x.l;let h;if(x.type=='note')return`<p class="mu" style="margin:12px 0 0;font-size:13px">${l}</p>`;
+ $('#mo').innerHTML=`<div class="sh" role="dialog" aria-modal="true" aria-labelledby="fh" tabindex="-1"><form id="fm" autocomplete="off" onsubmit="return sub(event)"><h3 id="fh">${title}</h3>${fields.filter(x=>!x.show||x.show(v)).map(x=>{const l=typeof x.l=='function'?x.l(v):x.l;let h;if(x.type=='note')return`<p class="mu" style="margin:12px 0 0;font-size:13px">${l}</p>`;
   if(x.type=='seg')h=`<div class="seg" role="group" aria-labelledby="l_${x.k}">${x.o(v).map(([a,b])=>`<button type="button" class="${v[x.k]==a?'on':''}" aria-pressed="${v[x.k]==a}" onclick="sg('${x.k}','${a}')">${b}</button>`).join('')}</div>`;
   else if(x.type=='select')h=`<select id="f_${x.k}" name="${x.k}" onchange="drawF()">${x.o(v).map(([a,b])=>`<option value="${esc(a)}"${v[x.k]==a?' selected':''}>${esc(b)}</option>`).join('')}</select>`;
-  else{const nm=x.type=='number';h=`<input id="f_${x.k}" name="${x.k}" type="${nm?'text':x.type}" value="${esc(nm?nf(v[x.k]):v[x.k])}" ${nm?'inputmode="numeric" autocomplete="off" placeholder="Rp0" oninput="fmtIn(this)"':''} ${x.opt?'':'required'} ${x.af?'autofocus':''}>`}
+  else{const nm=x.type=='number';h=`<input id="f_${x.k}" name="${x.k}" type="${nm?'text':x.type}" value="${esc(nm?nf(v[x.k]):v[x.k])}" autocomplete="off" autocorrect="off" spellcheck="false" ${nm?'inputmode="numeric" placeholder="Rp0" oninput="fmtIn(this)"':''} ${x.opt?'':'required'}>`}
   return x.type=='seg'?`<label id="l_${x.k}">${l}</label>${h}`:`<label for="f_${x.k}">${l}</label>${h}`}).join('')}<div class="act">${del?'<button type="button" class="b d" onclick="delF()">Hapus</button>':''}<button type="button" class="b" onclick="closeF()">Batal</button><button class="b p">Simpan</button></div></form></div>`;
  openLayer($('#mo'))}
 function sg(key,x){if(!F)return;collect();F.v[key]=x;if(key=='t'&&x!='tf'&&F.fields.some(f=>f.k=='c'))F.v.c=(S.cat.find(c=>c.t==x)||{}).id;drawF(1)}
@@ -292,9 +301,9 @@ function selTog(id){if(!SEL)return;SEL.ids.has(id)?SEL.ids.delete(id):SEL.ids.ad
 function selAll(){if(!SEL)return;const a=[...document.querySelectorAll('#p_'+SEL.k+' [data-k]')].map(e=>e.dataset.id);SEL.ids=SEL.ids.size>=a.length?new Set():new Set(a);if(!SEL.ids.size&&!SEL.man)selOff();else selUi()}
 function selDel(){if(!SEL||!SEL.ids.size)return;const{k,ids}=SEL,n=ids.size;
  cf(`Hapus ${n} ${SELK[k]} yang dipilih?`,()=>{snap();animRemove(k,ids,()=>{S[k]=S[k].filter(x=>!ids.has(x.id));save();selOff();render();delToast(n);vib([10,30,10])})})}
-const LPS='#p_tx [data-k],#p_bud [data-k],#p_goal [data-k]';
+const LPS='#p_tx [data-k]';
 document.addEventListener('pointerdown',e=>{lp=0;clearTimeout(lpt);if(F||SEL||(e.pointerType=='mouse'&&e.button))return;const el=e.target.closest(LPS);if(!el)return;lx=e.clientX;ly=e.clientY;
- lpt=setTimeout(()=>{lp=1;vib(15);selOn(el.dataset.k,el.dataset.id)},500)});
+ lpt=setTimeout(()=>{lp=1;vib(15);ddNoSel();selOn(el.dataset.k,el.dataset.id)},500)});
 document.addEventListener('pointermove',e=>{if(Math.abs(e.clientX-lx)>10||Math.abs(e.clientY-ly)>10)clearTimeout(lpt)});
 ['pointerup','pointercancel'].forEach(t=>document.addEventListener(t,()=>clearTimeout(lpt)));
 document.addEventListener('contextmenu',e=>{if(e.target.closest('[data-k]'))e.preventDefault()});
@@ -408,6 +417,95 @@ document.addEventListener('touchmove',e=>{if(!sw||busy)return;const t=e.touches[
  place(0,dx*(nb(dx<0?1:-1)?1:.25));navDrag(dx)},{passive:true});
 const fin=e=>{if(!sw||sw.h!==true){sw=null;return}const dx=e.changedTouches[0].clientX-sw.x,v=Math.abs(dx)/Math.max(1,Date.now()-sw.t),to=nb(dx<0?1:-1),ok=to&&(Math.abs(dx)>innerWidth*.22||(v>.5&&Math.abs(dx)>30));sw=null;busy=true;setTimeout(()=>{busy=false},330);if(ok)go(to);else{moveInd();place(1)}};
 document.addEventListener('touchend',fin,{passive:true});document.addEventListener('touchcancel',fin,{passive:true});
+/* ---------- Form: naik di atas keyboard, tanpa saran isian otomatis ---------- */
+(()=>{const vv=window.visualViewport,r=document.documentElement;let q=0,last=0;
+ /* tinggi keyboard dipakai sebagai translateY (hanya compositor) + transisi, bukan perubahan layout, supaya halus */
+ const apply=()=>{q=0;if(!vv)return;const k=Math.max(0,Math.round(innerHeight-vv.height-vv.offsetTop)),v=k>80?k:0;if(v!==last){last=v;r.style.setProperty('--kbh',v+'px')}};
+ const kb=()=>{if(!q)q=requestAnimationFrame(apply)};
+ if(vv){vv.addEventListener('resize',kb);vv.addEventListener('scroll',kb)}
+ document.addEventListener('focusin',e=>{const t=e.target;if(!t||!t.matches||!t.matches('input,textarea,select'))return;
+  if(t.matches('input:not([type=file]):not([type=checkbox]):not([type=radio]),textarea')){t.setAttribute('autocomplete','off');t.setAttribute('autocorrect','off')}
+  const sh=t.closest('#mo .sh');if(sh&&sh.scrollHeight>sh.clientHeight+2)setTimeout(()=>{if(document.activeElement===t&&t.isConnected)t.scrollIntoView({block:'nearest',behavior:RM?'auto':'smooth'})},350)});
+ document.addEventListener('focusout',()=>setTimeout(kb,120))})();
+/* ---------- Wishlist & Tabungan: tekan lama lalu geser untuk mengurutkan ---------- */
+let DD=null,ddp=null,ddSettle=0,ddSupp=0;
+const DD_MS=450,DD_SLOP=8,DD_EDGE=56,DD_SEL='#wll .r[data-k="bud"],#p_goal .g2>.c[data-k="goal"]';
+function ddPendClear(){if(ddp){clearTimeout(ddp.t);ddp=null}}
+document.addEventListener('pointerdown',e=>{
+ ddPendClear();
+ if(DD||ddSettle||!e.isPrimary||F||SEL||DG||busy||(e.pointerType=='mouse'&&e.button))return;
+ const el=e.target.closest(DD_SEL);if(!el)return;
+ const p=ddp={id:e.pointerId,x:e.clientX,y:e.clientY,x0:e.clientX,y0:e.clientY,el,t:setTimeout(()=>{if(ddp!==p)return;ddp=null;ddStart(p)},DD_MS)}});
+addEventListener('pointermove',e=>{if(!ddp||e.pointerId!=ddp.id)return;ddp.x=e.clientX;ddp.y=e.clientY;if(Math.abs(e.clientX-ddp.x0)>DD_SLOP||Math.abs(e.clientY-ddp.y0)>DD_SLOP)ddPendClear()},true);
+['pointerup','pointercancel'].forEach(t=>addEventListener(t,e=>{if(ddp&&e.pointerId==ddp.id)ddPendClear()},true));
+/* klik setelah drag tidak boleh membuka form edit; hanya berlaku sesaat (tanpa flag yang bisa tersangkut) */
+/* cegah seleksi teks bawaan browser (highlight biru) saat tekan lama pada item yang bisa diseret */
+document.addEventListener('selectstart',e=>{const t=e.target.nodeType==1?e.target:e.target.parentElement;if(DD||ddp||ddSettle||(t&&t.closest&&t.closest(DD_SEL+',#p_tx [data-k]')))e.preventDefault()},true);
+const ddNoSel=()=>{try{const g=getSelection();g&&g.removeAllRanges()}catch(_){}};
+addEventListener('click',e=>{if(performance.now()<ddSupp){e.preventDefault();e.stopPropagation()}},true);
+function ddStart(p){
+ const el=p.el;if(DD||ddSettle||!el.isConnected||F||SEL||DG)return;
+ const k=el.dataset.k,sc=$('#p_'+k),list=el.parentElement,rows=[...list.children].filter(r=>r.matches('[data-k="'+k+'"]')),from=rows.indexOf(el);
+ if(from<0||!sc)return;
+ const sr=sc.getBoundingClientRect(),sc0=sc.scrollTop,tops=[],lefts=[],hs=[],ws=[];
+ rows.forEach(r=>{const b=r.getBoundingClientRect();tops.push(b.top-sr.top+sc0);lefts.push(b.left-sr.left);hs.push(b.height);ws.push(b.width)});
+ const n=rows.length,grid=lefts.some(l=>Math.abs(l-lefts[0])>2),
+  s=DD={k,id:p.id,el,rows,from,n,tops,lefts,hs,ws,grid,gap:n>1&&!grid?Math.max(0,tops[1]-tops[0]-hs[0]):0,sc,sc0,startX:p.x,startY:p.y,px:p.x,py:p.y,target:from,sx:0,sy:0,raf:0,ended:false,ids:rows.map(r=>r.dataset.id),ac:new AbortController(),
+  minY:Math.min(...tops)-tops[from],maxY:Math.max(...tops.map((t,i)=>t+hs[i]))-tops[from]-hs[from],
+  minX:Math.min(...lefts)-lefts[from],maxX:Math.max(...lefts.map((l,i)=>l+ws[i]))-lefts[from]-ws[from]},o={signal:s.ac.signal};
+ sw=null;ddNoSel();
+ rows.forEach(r=>r.classList.add(r===el?'dgl':'dgi'));
+ sc.style.overflowY='hidden';
+ try{el.setPointerCapture(p.id)}catch(_){}
+ addEventListener('pointermove',ev=>{if(ev.pointerId==s.id){s.px=ev.clientX;s.py=ev.clientY}},{...o,capture:true});
+ addEventListener('pointerup',ev=>{if(ev.pointerId==s.id)ddEnd(s,true)},{...o,capture:true});
+ addEventListener('pointercancel',ev=>{if(ev.pointerId==s.id)ddEnd(s,false)},{...o,capture:true});
+ addEventListener('touchmove',ev=>{if(ev.cancelable)ev.preventDefault();ev.stopPropagation()},{...o,capture:true,passive:false});
+ addEventListener('contextmenu',ev=>ev.preventDefault(),{...o,capture:true});
+ addEventListener('keydown',ev=>{if(ev.key=='Escape')ddEnd(s,false)},{...o,capture:true});
+ addEventListener('blur',()=>ddEnd(s,false),o);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)ddEnd(s,false)},o);
+ vib(15);
+ s.raf=requestAnimationFrame(()=>ddFrame(s))}
+function ddFrame(s){
+ if(DD!==s||s.ended)return;
+ if(!s.el.isConnected){ddEnd(s,false);return}
+ const r=s.sc.getBoundingClientRect();let v=0;
+ if(s.py<r.top+DD_EDGE)v=-Math.min(1,(r.top+DD_EDGE-s.py)/DD_EDGE);else if(s.py>r.bottom-DD_EDGE)v=Math.min(1,(s.py-(r.bottom-DD_EDGE))/DD_EDGE);
+ if(v)s.sc.scrollTop+=Math.sign(v)*Math.max(1,Math.round(Math.abs(v)*14));
+ /* posisi dihitung dari titik awal (bukan akumulasi delta) + kompensasi scroll */
+ const dy=Math.max(s.minY,Math.min(s.maxY,(s.py-s.startY)+(s.sc.scrollTop-s.sc0))),dx=s.grid?Math.max(s.minX,Math.min(s.maxX,s.px-s.startX)):0;
+ s.el.style.transform=`translate3d(${dx}px,${dy}px,0) scale(1.02)`;
+ const cy=s.tops[s.from]+s.hs[s.from]/2+dy,cx=s.lefts[s.from]+s.ws[s.from]/2+dx;let t=0;
+ if(!s.grid){/* daftar satu kolom: hitung item lain yang titik tengah aslinya di atas */
+  for(let i=0;i<s.n;i++)if(i!==s.from&&s.tops[i]+s.hs[i]/2<cy)t++}
+ else{/* grid: slot asli terdekat */
+  let b=1/0;for(let j=0;j<s.n;j++){const a=s.lefts[j]+s.ws[j]/2-cx,c=s.tops[j]+s.hs[j]/2-cy,d=a*a+c*c;if(d<b){b=d;t=j}}}
+ if(t!==s.target){s.target=t;ddShift(s);vib(6)}
+ s.raf=requestAnimationFrame(()=>ddFrame(s))}
+function ddShift(s){
+ const ord=[];for(let i=0;i<s.n;i++)if(i!==s.from)ord.push(i);ord.splice(s.target,0,s.from);
+ const nt=[],nl=[];
+ if(s.grid)ord.forEach((i,j)=>{nt[i]=s.tops[j];nl[i]=s.lefts[j]});
+ else{let cur=s.tops[0];ord.forEach(i=>{nt[i]=cur;nl[i]=s.lefts[i];cur+=s.hs[i]+s.gap})}
+ s.rows.forEach((r,i)=>{if(i===s.from)return;const y=nt[i]-s.tops[i],x=nl[i]-s.lefts[i];r.style.transform=x||y?`translate3d(${x}px,${y}px,0)`:''});
+ s.sx=nl[s.from]-s.lefts[s.from];s.sy=nt[s.from]-s.tops[s.from]}
+function ddEnd(s,commit){
+ if(DD!==s||s.ended)return;s.ended=true;cancelAnimationFrame(s.raf);s.ac.abort();
+ try{s.el.releasePointerCapture(s.id)}catch(_){}
+ ddSupp=performance.now()+400;DD=null;
+ if(!commit){s.target=s.from;s.sx=s.sy=0;s.rows.forEach(r=>{if(r!==s.el)r.style.transform=''})}
+ s.el.classList.add('dgs');s.el.style.transform=s.sx||s.sy?`translate3d(${s.sx}px,${s.sy}px,0)`:'';
+ ddSettle=setTimeout(()=>{ddSettle=0;
+  s.rows.forEach(r=>{r.classList.remove('dgl','dgi','dgs');r.style.transform=''});
+  s.sc.style.overflowY='';
+  if(commit&&s.target!==s.from)ddCommit(s)},RM?0:220)}
+function ddCommit(s){
+ const ids=s.ids.slice(),[m]=ids.splice(s.from,1);ids.splice(s.target,0,m);
+ const L=S[s.k],mp=new Map(L.map(b=>[String(b.id),b])),out=[];
+ ids.forEach(id=>{const b=mp.get(String(id));if(b){out.push(b);mp.delete(String(id))}});
+ S[s.k]=out.concat(L.filter(b=>mp.has(String(b.id))));
+ save();render()}
 /* ---------- Bahasa / Translate ---------- */
 const LC=()=>S.lang==='en'?'en-GB':'id-ID';
 const EN={'Menu utama':'Main menu','Buka menu':'Open menu','Tutup menu':'Close menu','Kembali':'Back','Menu':'Menu','Dashboard':'Dashboard','Transaksi':'Transactions','Saldo':'Balance','Budget':'Budget','Tabungan':'Savings','Laporan':'Reports',
