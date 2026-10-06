@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><script>try{var d=JSON.parse(localStorage.getItem("duitku-v1"));document.documentElement.setAttribute("data-nx",d&&d.ts&&d.theme!=="dark"?"light":"dark");if(d&&d.ff==="system")document.documentElement.setAttribute("data-nxf","system")}catch(e){document.documentElement.setAttribute("data-nx","dark")}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"><title>Nexus Finance</title><meta name="theme-color" content="#3b5bdb"><link rel="manifest" href="manifest.json">
+<!DOCTYPE html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"><script>try{var d=JSON.parse(localStorage.getItem("duitku-v1"));document.documentElement.setAttribute("data-nx",d&&d.ts&&d.theme!=="dark"?"light":"dark");if(d&&d.ff==="system")document.documentElement.setAttribute("data-nxf","system")}catch(e){document.documentElement.setAttribute("data-nx","dark")}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"><title>Nexus Finance</title><meta name="theme-color" content="#3b5bdb"><link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Nexus Finance"><meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>:root{--ff:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}:root[data-nxf="system"]{--ff:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -100,8 +100,7 @@ body.selm .c[data-k]::after{animation:pc .22s ease both}body.selm .c[data-k].sl:
 .dgl{z-index:5;transition:none!important;will-change:transform;touch-action:none;cursor:grabbing;box-shadow:0 12px 30px rgba(0,0,0,.3)}
 .r.dgl{background:var(--cd);border-radius:12px;border-color:transparent;margin:0 -10px;padding-left:10px!important;padding-right:10px!important}
 .dgl.dgs{transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s!important;box-shadow:none}
-@media(max-width:599px){#mo{padding:0 12px calc(max(5vh,20px) + env(safe-area-inset-bottom,0px));box-sizing:border-box}.sh{border-radius:20px;max-height:calc(100% - 12px - var(--kbh,0px))}}
-#mo.show .sh{transform:translate3d(0,calc(var(--kbh,0px)*-1),0);will-change:transform}
+@media(max-width:599px){#mo{padding:0 12px calc(max(5vh,20px) + env(safe-area-inset-bottom,0px));box-sizing:border-box}.sh{border-radius:20px;max-height:calc(100% - 12px)}}
 .b,button,.r,label,select,input,a{touch-action:manipulation}
 </style><style>.bal{cursor:pointer;display:block;margin-bottom:10px;width:fit-content;max-width:100%;border-radius:10px;-webkit-tap-highlight-color:transparent}.bal:active{opacity:.7}.hq details{padding:10px 0;border-top:1px solid var(--bd)}.hq h3+details{border-top:0}.hq summary{cursor:pointer;font-weight:400;font-size:15px;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px}.hq summary::-webkit-details-marker{display:none}.hq summary::after{content:"";flex:none;width:8px;height:8px;border-right:2px solid var(--mu);border-bottom:2px solid var(--mu);transform:rotate(45deg);margin:-4px 4px 0 0;transition:transform .2s}.hq details[open] summary::after{transform:rotate(-135deg);margin-top:4px}.hq details p{margin:8px 0 0;font-weight:400;font-size:14px;line-height:1.55}.bal:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
 </style>
@@ -187,7 +186,7 @@ function trend(s,e){const mo=P(e)-P(s)>92*864e5,m={},ks=[];S.tx.filter(x=>x.t=='
 
 const V={};let tab=['dash','tx','bud','goal','rep'].includes(S.st)?S.st:'dash',fl='all',rp={p:'month',s:rng('month')[0],e:today};
 V.dash=()=>{const[s,e]=rng('month'),i=sm('in',s,e),o=sm('out',s,e),nb=S.bud.filter(b=>!bok(b)).length;
- return`<div class="c"><span class="mu" style="display:block;margin-bottom:2px">Total saldo</span><div class="big bal" role="button" tabindex="0" aria-label="Atur saldo" onclick="ed('acc','main')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();ed('acc','main')}" data-v="${total()}">${R(total())}</div><div class="st st3"><div><span class="mu">Pemasukan</span><b class="gi"><span class="ar" aria-hidden="true">▲</span>${R(i)}</b></div><div><span class="mu">Pengeluaran</span><b class="go"><span class="ar" aria-hidden="true">▼</span>${R(o)}</b></div><div><span class="mu">Sisa bulan ini</span><b class="${i-o<0?'go':''}">${R(i-o)}</b></div></div></div>
+ return`<div class="c"><span class="mu" style="display:block;margin-bottom:2px">Total saldo</span><div class="big bal" role="button" tabindex="0" aria-label="Atur saldo" onclick="ed('acc','main')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();ed('acc','main')}" data-v="${total()}">${R(total())}</div><div class="st st3"><div><span class="mu">Pemasukan</span><b class="gi">${R(i)}</b></div><div><span class="mu">Pengeluaran</span><b class="go">${R(o)}</b></div><div><span class="mu">Sisa bulan ini</span><b class="${i-o<0?'go':''}">${R(i-o)}</b></div></div></div>
 <div class="g2"><div class="c"><h2>Pemasukan vs pengeluaran</h2>${mchart()}</div><div class="c"><h2>Pengeluaran bulan ini</h2>${donut(brk(s,e))}</div></div>
 <div class="g2"><div class="c"><h2>Wishlist <a href="#" class="mu" onclick="go('bud');return false">Lihat semua</a></h2>${S.bud.slice(0,4).map(b=>wl(b,1)).join('')||em('🛍️','Wishlist masih kosong','Catat barang yang ingin kamu beli.')}</div>
 <div class="c"><h2>Tabungan</h2>${S.goal.map(g=>gRow(g)).join('')||em(DOL,'Belum ada tabungan','Catat tabungan yang ingin kamu kumpulkan.')}</div></div>
@@ -204,10 +203,9 @@ V.acc=()=>`<div class="c"><span class="mu">Total saldo</span><div class="big" da
 V.bud=()=>`${hd('Wishlist','bud')}<div class="c" id="wll">${S.bud.length?S.bud.map(b=>wl(b)).join('')+`<div class="row2" style="margin:6px -10px -6px;padding:13px 10px;border-radius:12px;background:color-mix(in srgb,var(--ac) 12%,transparent);font-variant-numeric:tabular-nums"><span style="color:var(--ac);font-weight:600">Total Harga</span><b style="color:var(--ac);white-space:nowrap">${R(S.bud.reduce((a,b)=>a+(+b.m||0),0))}</b></div>`:em('🛍️','Wishlist masih kosong','Tekan Tambah untuk mencatat barang yang ingin kamu beli.')}</div>`;
 V.goal=()=>`${hd('Tabungan','goal')}<div class="g2">${S.goal.map(g=>`<div class="c" data-k="goal" data-id="${g.id}">${gRow(g,1)}</div>`).join('')||`<div class="c">${em(DOL,'Belum ada tabungan','Tekan Tambah untuk mencatat tabungan yang ingin kamu kumpulkan.')}</div>`}</div>`;
 V.rep=()=>{let s,e;if(rp.p=='custom'){s=rp.s;e=rp.e;if(s>e)[s,e]=[e,s]}else[s,e]=rng(rp.p);
- const L=Math.round((P(e)-P(s))/864e5)+1,ps=add(s,-L),pe=add(s,-1),i=sm('in',s,e),o=sm('out',s,e),br=brk(s,e),
- cmp=(a,b,bad)=>{if(!b)return'<small class="mu">Belum ada data periode lalu</small>';const d=Math.round((a-b)/b*100);return`<small style="color:var(--${(d>0)==bad?'out':'in'})">${d>0?'▲':d<0?'▼':'='} ${Math.abs(d)}% vs periode lalu</small>`};
+ const L=Math.round((P(e)-P(s))/864e5)+1,ps=add(s,-L),pe=add(s,-1),i=sm('in',s,e),o=sm('out',s,e),br=brk(s,e);
  return`<div class="c"><div class="row2"><select style="width:auto" onchange="rp.p=this.value;render()">${[['day','Hari ini'],['week','Minggu ini'],['month','Bulan ini'],['year','Tahun ini'],['custom','Custom range']].map(([v,l])=>`<option value="${v}"${rp.p==v?' selected':''}>${l}</option>`).join('')}</select><span class="mu">${fd(s,1)} – ${fd(e,1)}</span></div>${rp.p=='custom'?`<div class="row2" style="margin-top:10px"><input type="date" value="${rp.s}" onchange="rp.s=this.value;render()"><input type="date" value="${rp.e}" onchange="rp.e=this.value;render()"></div>`:''}</div>
-<div class="g2" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"><div class="c"><span class="mu">Pemasukan</span><div class="gi" style="font-size:19px;font-weight:700"><span class="ar" aria-hidden="true">▲</span>${R(i)}</div>${cmp(i,sm('in',ps,pe),0)}</div><div class="c"><span class="mu">Pengeluaran</span><div class="go" style="font-size:19px;font-weight:700"><span class="ar" aria-hidden="true">▼</span>${R(o)}</div>${cmp(o,sm('out',ps,pe),1)}</div><div class="c"><span class="mu">Selisih</span><div class="${i-o<0?'go':'gi'}" style="font-size:19px;font-weight:700">${R(i-o)}</div><small class="mu">${i-o<0?'Defisit':'Surplus'}</small></div></div>
+<div class="g2" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))"><div class="c"><span class="mu">Pemasukan</span><div class="gi" style="font-size:19px;font-weight:700">${R(i)}</div></div><div class="c"><span class="mu">Pengeluaran</span><div class="go" style="font-size:19px;font-weight:700">${R(o)}</div></div><div class="c"><span class="mu">${i-o<0?'Defisit':'Surplus'}</span><div class="${i-o<0?'go':'gi'}" style="font-size:19px;font-weight:700">${R(i-o)}</div></div></div>
 <div class="c"><h2>Rincian pengeluaran</h2>${donut(br)}</div>`};
 
 function go(t){const from=tab;if(t!=from){selOff();closeRow();hideToast()}if(document.activeElement&&document.activeElement.blur&&!document.body.classList.contains('kb'))document.activeElement.blur();tab=t;
@@ -418,15 +416,24 @@ document.addEventListener('touchmove',e=>{if(!sw||busy)return;const t=e.touches[
 const fin=e=>{if(!sw||sw.h!==true){sw=null;return}const dx=e.changedTouches[0].clientX-sw.x,v=Math.abs(dx)/Math.max(1,Date.now()-sw.t),to=nb(dx<0?1:-1),ok=to&&(Math.abs(dx)>innerWidth*.22||(v>.5&&Math.abs(dx)>30));sw=null;busy=true;setTimeout(()=>{busy=false},330);if(ok)go(to);else{moveInd();place(1)}};
 document.addEventListener('touchend',fin,{passive:true});document.addEventListener('touchcancel',fin,{passive:true});
 /* ---------- Form: naik di atas keyboard, tanpa saran isian otomatis ---------- */
-(()=>{const vv=window.visualViewport,r=document.documentElement;let q=0,last=0;
- /* tinggi keyboard dipakai sebagai translateY (hanya compositor) + transisi, bukan perubahan layout, supaya halus */
- const apply=()=>{q=0;if(!vv)return;const k=Math.max(0,Math.round(innerHeight-vv.height-vv.offsetTop)),v=k>80?k:0;if(v!==last){last=v;r.style.setProperty('--kbh',v+'px')}};
- const kb=()=>{if(!q)q=requestAnimationFrame(apply)};
- if(vv){vv.addEventListener('resize',kb);vv.addEventListener('scroll',kb)}
+(()=>{
+ /* Layout viewport mengecil mengikuti keyboard (resizes-content), jadi posisi form selalu benar dari browser.
+    Agar tidak melompat, perpindahannya dianimasikan (FLIP) hanya dengan transform: tanpa overshoot/naik-turun. */
+ let top=null,tk=0;
+ const sh=()=>document.querySelector('#mo.show .sh');
+ const track=()=>{const s=sh();top=s?s.offsetTop:null};
+ addEventListener('resize',()=>{
+  const s=sh();if(!s||top==null){track();return}
+  const nt=s.offsetTop,d=top-nt;top=nt;
+  if(Math.abs(d)<24||RM)return;
+  const id=++tk;
+  s.style.transition='none';s.style.transform=`translate3d(0,${d}px,0)`;s.getBoundingClientRect();
+  requestAnimationFrame(()=>{if(id!==tk)return;s.style.transition='transform .3s cubic-bezier(.2,.8,.2,1)';s.style.transform='';
+   setTimeout(()=>{if(id===tk){s.style.transition='';s.style.transform=''}},360)})});
  document.addEventListener('focusin',e=>{const t=e.target;if(!t||!t.matches||!t.matches('input,textarea,select'))return;
   if(t.matches('input:not([type=file]):not([type=checkbox]):not([type=radio]),textarea')){t.setAttribute('autocomplete','off');t.setAttribute('autocorrect','off')}
-  const sh=t.closest('#mo .sh');if(sh&&sh.scrollHeight>sh.clientHeight+2)setTimeout(()=>{if(document.activeElement===t&&t.isConnected)t.scrollIntoView({block:'nearest',behavior:RM?'auto':'smooth'})},350)});
- document.addEventListener('focusout',()=>setTimeout(kb,120))})();
+  if(t.closest('#mo .sh')){track();const s=t.closest('.sh');if(s.scrollHeight>s.clientHeight+2)setTimeout(()=>{if(document.activeElement===t&&t.isConnected)t.scrollIntoView({block:'nearest',behavior:RM?'auto':'smooth'})},350)}});
+ document.addEventListener('focusout',()=>setTimeout(track,400))})();
 /* ---------- Wishlist & Tabungan: tekan lama lalu geser untuk mengurutkan ---------- */
 let DD=null,ddp=null,ddSettle=0,ddSupp=0;
 const DD_MS=450,DD_SLOP=8,DD_EDGE=56,DD_SEL='#wll .r[data-k="bud"],#p_goal .g2>.c[data-k="goal"]';
